@@ -161,3 +161,63 @@ enum DeviceState {
 
 let currentState = DeviceState.off
 currentState.description()
+
+// =================================================================
+//                       Задание hard coding
+// =================================================================
+
+/* Задача: Система бронирования билетов на транспорт
+ Создайте перечисление Transport, которое описывает различные виды транспорта: car, bus, train, airplane. Для каждого вида транспорта определите состояние бронирования: notAvailable (не доступно), available (доступно), fullyBooked (все билеты проданы).
+ Используйте вложенное перечисление BookingStatus внутри Transport для хранения состояния бронирования. Условия:
+ 1. Создайте перечисление Transport, которое содержит вложенное перечисление BookingStatus.
+ 2. Реализуйте метод в Transport, который выводит доступное состояние транспорта (доступен или нет).
+ 3. Напишите функцию, которая выводит текущее состояние бронирования для каждого транспорта.
+ Пример:
+ Автобус: Доступно для бронирования
+ Поезд: Все билеты проданы
+ Самолёт: Не доступно
+*/
+
+enum Transport {
+    enum BookingStatus: String {
+        case notAvailable = "Не доступно."
+        case available    = "Доступно."
+        case fullyBooked  = "Все билеты проданы."
+    }
+    case car (status: BookingStatus)
+    case bus (status: BookingStatus)
+    case train (status: BookingStatus)
+    case airplane (status: BookingStatus)
+    func isBooking() {
+        switch self {
+        case .car(let status):
+            print("Билеты на такси: ", status.rawValue)
+        case .bus(let status):
+            print("Билеты на автобус: ", status.rawValue)
+        case .train(let status):
+            print("Билеты на поезд: ", status.rawValue)
+        case .airplane(let status):
+            print("Билеты на самолёт: ", status.rawValue)
+        }
+    }
+}
+
+func bookingReport(car: Transport.BookingStatus,
+                   bus: Transport.BookingStatus,
+                   train: Transport.BookingStatus,
+                   airplane: Transport.BookingStatus)
+{
+    print("Наличие билетов на данный момент:")
+    var temp: Transport = .bus(status: bus)
+        temp.isBooking()
+        temp = .airplane(status: airplane)
+        temp.isBooking()
+        temp = .car(status: car)
+        temp.isBooking()
+        temp = .train(status: train)
+        temp.isBooking()
+}
+
+bookingReport(car: .available, bus: .fullyBooked, train: .notAvailable, airplane: .notAvailable)
+
+
