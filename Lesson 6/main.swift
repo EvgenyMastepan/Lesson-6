@@ -55,3 +55,49 @@ printStatusOfOrder(status: .cancelled)
 //                          Задание №1-3
 // =================================================================
 /* Задача 3: Создайте перечисление для различных типов социальных сетей (facebook, twitter, instagram) и функцию, которая выводит популярный хэштег для каждой сети. */
+
+enum SocialNets: String {
+    case facebook = "#photography"
+    case twitter = "#Bitcoin"
+    case instagram = "#love"
+    var description: String { return self.rawValue }
+}
+
+func descriptionForSocialNet (net: SocialNets) {
+    print (net.description)
+}
+
+descriptionForSocialNet(net: .facebook)
+
+// =================================================================
+//                          Задание №1-3
+// =================================================================
+/* Задача 4: Создайте перечисление Grade, которое описывает оценки студента: excellent, good, satisfactory, unsatisfactory. Напишите функцию, которая принимает оценку и выводит сообщение:
+ ● excellent: "Отлично! Ты молодец!"
+ ● good: "Хорошо! Можешь лучше."
+ ● satisfactory: "Удовлетворительно. Стоит подтянуть
+ знания."
+ ● unsatisfactory: "Неудовлетворительно. Нужно больше
+ учиться." */
+
+enum Grade {
+    case excellent
+    case good
+    case satisfactory
+    case unsatisfactory
+}
+
+func printGradeResume(status: Grade) {
+    switch status {
+    case .excellent:
+        print("Отлично! Ты молодец!")
+    case .good:
+        print("Хорошо! Можешь лучше.")
+    case .satisfactory:
+        print("Удовлетворительно. Стоит подтянуть знания.")
+    case .unsatisfactory:
+        print("еудовлетворительно. Нужно больше учиться.")
+    }
+}
+
+printGradeResume(status: .satisfactory)
