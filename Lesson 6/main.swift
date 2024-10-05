@@ -23,3 +23,7 @@ enum CardinalDirections: String {
 
 let direction = CardinalDirections.south
 print (direction.description())
+
+// =================================================================
+//                          Задание №2
+// =================================================================
